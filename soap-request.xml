@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:cred="http://example.com/credit">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cred:CreditCheckRequest>
+            <requestId>720</requestId>
+            <iin>123456789012</iin>
+            <firstName>thr</firstName>
+            <lastName>nzt</lastName>
+            <amount>2</amount>
+        </cred:CreditCheckRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

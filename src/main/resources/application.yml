@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: mvnSoap
+server:
+  port: 8080
+
+
+credit:
+  rest:
+    base-url: http://localhost:8080/api
+    connect-timeout-ms: 2000
+    response-timeout-ms: 5000
+    retry:
+      attempts: 3
+      initial-backoff-ms: 2000
+
+logging:
+  level:
+    org.springframework.ws: DEBUG
+    com.example.credit: DEBUG

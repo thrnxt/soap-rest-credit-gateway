@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CreditCheckService"
+             targetNamespace="http://example.com/credit"
+             xmlns:tns="http://example.com/credit"
+             xmlns:xs="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+    <types>
+        <xs:schema targetNamespace="http://example.com/credit" elementFormDefault="qualified">
+            <xs:include schemaLocation="../xsd/credit.xsd"/>
+        </xs:schema>
+    </types>
+
+    <message name="CreditCheckRequestMessage">
+        <part name="parameters" element="tns:CreditCheckRequest"/>
+    </message>
+
+    <message name="CreditCheckResponseMessage">
+        <part name="parameters" element="tns:CreditCheckResponse"/>
+    </message>
+
+    <portType name="CreditCheckPort">
+        <operation name="CheckCredit">
+            <input message="tns:CreditCheckRequestMessage"/>
+            <output message="tns:CreditCheckResponseMessage"/>
+        </operation>
+    </portType>
+
+    <binding name="CreditCheckSoapBinding" type="tns:CreditCheckPort">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="CheckCredit">
+            <soap:operation soapAction="CheckCredit"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="CreditCheckService">
+        <port name="CreditCheckPort" binding="tns:CreditCheckSoapBinding">
+            <soap:address location="http://localhost:8080/ws"/>
+        </port>
+    </service>
+
+</definitions>
